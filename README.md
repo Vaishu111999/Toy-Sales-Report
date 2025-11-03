@@ -1,6 +1,6 @@
-🧸 Toy Sales Report Dashboard
+### 🧸 Toy Sales Report Dashboard
 
-📊 Project Overview
+### 📊 Project Overview
 The **Toy Sales Report Dashboard** provides a **comprehensive view** of store performance across multiple locations, highlighting key insights 
 into **sales trends**, **inventory health**, **product demand**, and **profitability**.  
 
@@ -9,9 +9,9 @@ how to optimize stock levels, and which product categories to prioritize for gro
 
 ---
 
-🧭 Key Insights & Storytelling
+### 🧭 Key Insights & Storytelling
 
-🏙️ 1. Store Location & Sales Performance
+### 🏙️ 1. Store Location & Sales Performance
 The data clearly shows that **store location** plays a crucial role in driving sales performance.  
 - **Downtown stores** generate the highest revenue, exceeding **$8 million**, followed by **Commercial areas**.  
 - **Residential** and **Airport** locations contribute relatively lower sales.  
@@ -19,7 +19,7 @@ The data clearly shows that **store location** plays a crucial role in driving s
 
 ---
 
-🏪 2. Store Performance Analysis
+### 🏪 2. Store Performance Analysis
 A bar chart compares the **Top 5 and Bottom 5 stores** by total sales.  
 - **Top Performers:**  
   - Toys Ciudad de México 2 (~600K in sales)  
@@ -33,21 +33,21 @@ A bar chart compares the **Top 5 and Bottom 5 stores** by total sales.
 
 ---
 
-📦 3. Average Inventory Analysis
+### 📦 3. Average Inventory Analysis
 The **inventory vs. sales scatter plot** shows the relationship between **average stock levels** and **sales performance**.  
 - Some stores achieve **high sales with lower inventory**, while others hold **excess stock** but perform poorly.  
 - This helps identify **overstocked or underperforming products**, allowing for better **stock optimization** across locations.
 
 ---
 
- 📈 4. Sales Trend Analysis (2022–2023)
+###  📈 4. Sales Trend Analysis (2022–2023)
 The **monthly trend visualization** shows consistent growth **year-over-year**, especially during **April and December** — 
 likely due to **festive promotions and seasonal demand**.  
 This insight supports **targeted marketing and inventory planning** during high-demand months.
 
 ---
 
-🎯 5. Product Category Performance
+### 🎯 5. Product Category Performance
 The **Product Category Analysis** highlights which segments drive the most revenue:
 - 🧸 **Toys** – Over **$5 million**, the company’s strongest segment.  
 - 🎨 **Art & Crafts**, ⚡ **Electronics**, 🎮 **Games**, and 🏀 **Sports & Outdoors** – Contribute moderate but steady sales.  
