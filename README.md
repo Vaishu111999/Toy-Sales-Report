@@ -62,7 +62,7 @@ This shows that **toys remain the core revenue pillar**, while other categories 
 |--------|--------|
 | **Total Profit** | 💰 $4 Million |
 | **Total Revenue** | 💵 $14 Million |
-| **Total Units Sold** | 📦 1.09 Million |
+| **Total Units Sold** | 📦 1 Million |
 | **Total Cost** | 🧾 $10 Million |
 | **Stock on Hand** | 🏗️ 29,742 Units |
 | **Average Inventory per Product** | 📊 18.67 Units |
