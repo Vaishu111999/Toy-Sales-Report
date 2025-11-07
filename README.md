@@ -105,8 +105,7 @@ This structure enables **efficient aggregation**, **filtering**, and **drill-dow
 ---
 
 ## 📸 Dashboard Preview
-<img width="1494" height="753" alt="image" src="https://github.com/user-attachments/assets/c0cb4326-1d2f-4cd9-b9a8-995ee4e1711e" />
-
+<img width="1511" height="753" alt="image" src="https://github.com/user-attachments/assets/c525a3a8-42f6-4d55-b639-d8111be67846" />
 
 
 
