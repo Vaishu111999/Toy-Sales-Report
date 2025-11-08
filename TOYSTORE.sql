@@ -8,28 +8,24 @@ Select * from PRODUCTS
 /*Sales Trend Analysis
 Monthly wise sales trend over the stores, location for both year(2022 & 2023)*/
 
+
 SELECT
     st.Store_Name,
     st.Store_Location,
-    YEAR(sa.Date) AS Year,
-    DATENAME(MONTH, sa.Date) AS Month,
+    FORMAT(sa.Date, 'MMM yyyy') AS Month_Year,
     SUM(sa.Units * p.Product_retail_Price) AS Total_Sales
 FROM SALES sa
-JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
-JOIN STORES st ON sa.Store_ID = st.Store_ID
-WHERE YEAR(sa.Date) IN (2022, 2023)
+INNER JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
+INNER JOIN STORES st ON sa.Store_ID = st.Store_ID
 GROUP BY
     st.Store_Name,
     st.Store_Location,
-    YEAR(sa.Date),
-    DATENAME(MONTH, sa.Date),
-    MONTH(sa.Date)
+    FORMAT(sa.Date, 'MMM yyyy')
 ORDER BY
-    YEAR(sa.Date),
-    MONTH(sa.Date),
+    min(sa.Date),
     st.Store_Name;
 
-
+    
 /*Stores performance Analysis
 Find the sales trend over the different Stores and find the best and least five stores 
 as per the performance in one query.*/
@@ -41,15 +37,15 @@ as per the performance in one query.*/
         st.Store_Location,
         SUM(sa.Units * p.Product_retail_Price) AS Total_Sales
     FROM SALES sa
-    JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
-    JOIN STORES st ON sa.Store_ID = st.Store_ID
+    INNER JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
+    INNER JOIN STORES st ON sa.Store_ID = st.Store_ID
     GROUP BY st.Store_ID, st.Store_Name, st.Store_Location
 ),
 RankedStores AS (
     SELECT 
         *,
-        RANK() OVER (ORDER BY Total_Sales DESC) AS Sales_Rank_Desc,
-        RANK() OVER (ORDER BY Total_Sales ASC)  AS Sales_Rank_Asc
+        RANK() OVER (ORDER BY Total_Sales DESC) AS Highest_Sales,
+        RANK() OVER (ORDER BY Total_Sales ASC)  AS Lowest_Sales
     FROM StoreSales
 )
 SELECT 
@@ -58,14 +54,13 @@ SELECT
     Store_Location,
     Total_Sales,
     CASE 
-        WHEN Sales_Rank_Desc <= 5 THEN 'Best 5 Store'
-        WHEN Sales_Rank_Asc <= 5 THEN 'Least 5 Store'
+        WHEN Highest_Sales <= 5 THEN 'Best 5 Store'
+        WHEN Lowest_Sales <= 5 THEN 'Least 5 Store'
         ELSE 'Average Performer'
     END AS Performance_Category
 FROM RankedStores
-WHERE Sales_Rank_Desc <= 5 OR Sales_Rank_Asc <= 5
+WHERE Highest_Sales <= 5 OR Lowest_Sales <= 5
 ORDER BY Total_Sales DESC;
-
 
 
 /*Does the area of store location  effect the sales of the product */
@@ -77,8 +72,8 @@ SELECT
     SUM(sa.Units * p.Product_Retail_Price) AS Total_Sales,
     SUM(sa.Units * p.Product_Retail_Price) / COUNT(DISTINCT st.Store_ID) AS Avg_Sales_Per_Store
 FROM SALES sa
-JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
-JOIN STORES st ON sa.Store_ID = st.Store_ID
+INNER JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
+INNER JOIN STORES st ON sa.Store_ID = st.Store_ID
 GROUP BY st.Store_Location
 ORDER BY Total_Sales DESC;
 
@@ -109,7 +104,8 @@ Locations like Downtown generate higher total sales because they have more store
 
 Locations like Airport show higher average sales per store, meaning better performance per outlet.
 
-Therefore, store location significantly influences sales outcomes — both in total volume and store efficiency.*/
+Therefore, store location significantly influences sales outcomes — 
+both in total volume and store efficiency.*/
 
 
 
@@ -127,8 +123,8 @@ SELECT
     SUM(sa.Units) AS Total_Units_Sold,
     AVG(p.Product_Retail_Price) AS Avg_Product_Price
 FROM SALES sa
-JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
-JOIN STORES st ON sa.Store_ID = st.Store_ID
+INNER JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
+INNER JOIN STORES st ON sa.Store_ID = st.Store_ID
 GROUP BY p.Product_ID, p.Product_Name, st.Store_ID, st.Store_Location
 ORDER BY st.Store_Location, Total_Sales DESC;
 
@@ -145,8 +141,8 @@ SELECT
     SUM(sa.Units) AS Total_Units_Sold,
     SUM(sa.Units * p.Product_Retail_Price) AS Total_Sales
 FROM SALES sa
-JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
-JOIN STORES st ON sa.Store_ID = st.Store_ID
+INNER JOIN PRODUCTS p ON sa.Product_ID = p.Product_ID
+INNER JOIN STORES st ON sa.Store_ID = st.Store_ID
 GROUP BY p.Product_Category
 ORDER BY Total_Sales DESC;
 
@@ -163,8 +159,8 @@ SELECT
     p.Product_Name,
     AVG(inv.Stock_On_Hand) AS Avg_Inventory
 FROM INVENTORY inv
-JOIN PRODUCTS p ON inv.Product_ID = p.Product_ID
-JOIN STORES st ON inv.Store_ID = st.Store_ID
+INNER JOIN PRODUCTS p ON inv.Product_ID = p.Product_ID
+INNER JOIN STORES st ON inv.Store_ID = st.Store_ID
 GROUP BY st.Store_ID, st.Store_Name, st.Store_Location, p.Product_ID, p.Product_Name
 ORDER BY st.Store_Location, Avg_Inventory DESC;
 
