@@ -69,8 +69,7 @@ This shows that **toys remain the core revenue pillar**, while other categories 
 | **Active Stores** | 🏬 10 |
 | **Total Product Count** | 🧮 35 |
 
-> 💬 The business maintains a **healthy profit margin (~28%)** and shows **efficient inventory management** across all stores.
-
+> 💬 The business maintains a **healthy profit margin (~28%)** and shows **efficient inventory management** across all stores. The company spent $10 million to produce and sell 1 million toys, which helped generate $14 million in revenue and $4 million in profit.Overall, the business is profitable and can grow even more by adding more stores in high-performing areas like airports.
 ---
 
 ## 🧠 Business Impact
